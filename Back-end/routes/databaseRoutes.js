@@ -1,6 +1,6 @@
 import express from 'express'
 import {populateDatabase} from '../controller/populateDatabase.js'
-import { readData } from '../CRUD/readData.js';
+
 import { filter } from '../controller/filter.js';
 import { updateData } from '../CRUD/updateData.js';
 import { search } from '../controller/search.js'
