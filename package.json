@@ -1,0 +1,28 @@
+{
+  "name": "cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Back-end/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "NODE_ENV=development nodemon Back-end/server.js",
+    "CMS": "NODE_ENV=production node Back-end/server.js",
+    "build": "npm install && npm install --prefix Front-end && npm run build --prefix Front-end"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
