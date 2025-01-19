@@ -15,6 +15,17 @@ const __dirname = path.resolve();
 CMS.use(express.json());
 CMS.use(bodyParser.json());
 
+
+CMS.use(cors({
+    origin: 'http://localhost:5173', // Replace with your frontend's URL
+    
+}));
+
+
+CMS.use("/api/v1/data",databaseRoutes)
+CMS.use("/api/v1/auth",authenticaitonRoutes)
+
+
 if(process.env.NODE_ENV === "production"){
     CMS.use(express.static(path.join(__dirname, "/Front-end/dist")));
 
@@ -25,14 +36,7 @@ if(process.env.NODE_ENV === "production"){
 }
 
 
-CMS.use(cors({
-    origin: 'http://localhost:5173', // Replace with your frontend's URL
-    
-}));
 
-
-CMS.use("/api/v1/data",databaseRoutes)
-CMS.use("/api/v1/auth",authenticaitonRoutes)
 
 
 const port = 3000

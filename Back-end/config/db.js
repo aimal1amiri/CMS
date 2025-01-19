@@ -1,6 +1,13 @@
 import sqlite3 from 'sqlite3'
+import path from 'path'
+import { fileURLToPath } from 'url';
 
-const dbName='CMSdatabase.db'
+// Get the directory of the current file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Define the path to the database file in the 'backend' folder
+const dbName = path.join(__dirname, 'CMSdatabase.db');
 
 const db = new sqlite3.Database(dbName, (error) => {
     if (error) {

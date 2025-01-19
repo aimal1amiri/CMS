@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { useDataStore } from "../store/dataStore";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import toast from "react-hot-toast";
 
 const PopulateDbPage = () => {
   const [jsonUrl, setJsonUrl] = useState("");
-  const { populateDatabase, isLoading, successMessage, error } = useDataStore();
+  const { populateDatabase, isLoading } = useDataStore();
   const navigate = useNavigate(); 
 
   const handlePopulate = async () => {
-    if (!jsonUrl.trim()) {
-      alert("Please provide a valid JSON URL.");
+      
+    if (!jsonUrl.trim().toLowerCase().endsWith(".json")) {
+      
+      toast.error("Please provide a valid JSON URL.")
       return;
     }
 
@@ -47,11 +50,8 @@ const PopulateDbPage = () => {
         >
           {isLoading ? "Populating..." : "Populate Database"}
         </button>
-        {/* Display success or error messages */}
-        {successMessage && (
-          <p className="text-green-600 font-semibold mt-4 text-center">{successMessage}</p>
-        )}
-        {error && <p className="text-red-600 font-semibold mt-4 text-center">{error}</p>}
+  
+       
       </div>
     </div>
     </div>
