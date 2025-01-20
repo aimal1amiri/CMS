@@ -27,15 +27,16 @@ CMS.use(cors({
     
 }));
 */
-/*
+
+
 CMS.use(cors({
-    origin: allowedOrigins, // Allow the origins listed
+    origin: allowedOrigins, // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    credentials: true, // Allow credentials (cookies, headers, etc.)
+    credentials: true, // Allow credentials (cookies, etc.)
   }));
-  */
-
+  
+  // Handle preflight OPTIONS request
   CMS.options('*', cors({
     origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
