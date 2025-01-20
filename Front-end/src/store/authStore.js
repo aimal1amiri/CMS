@@ -37,7 +37,7 @@ export const useAuthenticationStore = create((set) => ({
         set({ isLoading: true, error: null });
         try {
             console.log(API_URL)
-            const response = await axios.post(`${API_URL}/signin`, { username, password });
+            const response = await axios.post(`${API_URL}/signin`, { username, password },{ withCredentials: true });
             
             const token = response.data.token;
     
@@ -76,6 +76,7 @@ export const useAuthenticationStore = create((set) => ({
         try {
             const response = await axios.get(`${API_URL}/user-check-auth`, {
                 headers: { Authorization: token },
+                withCredentials: true, 
             });
             set({ user: response.data.user, token, isAuthenticated: true });
         } catch (error) {
