@@ -1,10 +1,13 @@
 import { create } from 'zustand';
 import axios from 'axios';
 import dotenv from 'dotenv'
+import toast from 'react-hot-toast';
 
 
 
-const API_URL = "https://cms-72aj.onrender.com/api/v1/auth"; // Adjust this to your backend's base URL
+
+const API_URL = process.env.NODE_ENV === 'production' ? `${FRONT_END_API_URL}/api/v1/auth` : 'http://localhost:3000/api/v1/auth';
+//console.log(API_URL)
 
 
 
@@ -15,10 +18,11 @@ export const useAuthenticationStore = create((set) => ({
     error: null,
     isLoading: false,
 
-    signup: async (email, password, username) => { // Update 'name' to 'username'
+    signup: async (email, password, username) => { 
         set({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/signup`, { email, password, username }); // Match with backend
+            const response = await axios.post(`${API_URL}/signup`, { email, password, username }); 
+            console.log("signin response:" ,response)
             const token = response.data.token;
             localStorage.setItem('authToken', token); // Store token in localStorage
             set({ user: response.data.user, token, isAuthenticated: true, isLoading: false });
@@ -32,15 +36,17 @@ export const useAuthenticationStore = create((set) => ({
     login: async (username, password) => {
         set({ isLoading: true, error: null });
         try {
+            console.log(API_URL)
             const response = await axios.post(`${API_URL}/signin`, { username, password });
+            
             const token = response.data.token;
     
-            // Store the token in localStorage
+            
             localStorage.setItem('authToken', token);
     
-            // Update the store state
+            
             set({
-                user: { username }, // Populate user manually or remove if not needed
+                user: { username }, 
                 token,
                 isAuthenticated: true,
                 error: null,
@@ -48,7 +54,9 @@ export const useAuthenticationStore = create((set) => ({
             });
         } catch (error) {
             set({ error: error.response?.data?.message || 'Error logging in', isLoading: false });
+            toast.error(error.response.data.message)
             throw error;
+            
         }
     },
     

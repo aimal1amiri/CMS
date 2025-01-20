@@ -7,7 +7,7 @@ import cors from 'cors';
 import path from 'path'
 import dotenv from 'dotenv';
 
-
+dotenv.config();
 const CMS = express();
 const __dirname = path.resolve();
 
@@ -16,14 +16,13 @@ CMS.use(express.json());
 CMS.use(bodyParser.json());
 
 const allowedOrigins = [
-    'http://localhost:5173',  // Local frontend URL for development
-    process.env.FRONT_END_API_URL,  // Production frontend URL
-  ];
-
+    'http://localhost:5173',  
+    process.env.FRONT_END_API_URL,  
+]
 
 CMS.use(cors({
-    origin: "*", 
-    credentials: true,
+    origin: allowedOrigins, 
+    
     
 }));
 

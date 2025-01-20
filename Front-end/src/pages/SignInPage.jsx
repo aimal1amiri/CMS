@@ -4,24 +4,25 @@ import { User, Lock, Loader } from "lucide-react";
 import Input from "../components/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthenticationStore } from "../store/authStore";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [clientError, setClientError] = useState("");
+  
 
   const navigate = useNavigate();
-  const { login, error, isLoading } = useAuthenticationStore();
+  const { login, isLoading } = useAuthenticationStore();
 
   
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
-    setClientError("");
+    
   };
 
   const validateInputs = () => {
     if (!username || !password) {
-      setClientError("Both username and password are required.");
+      toast.error("All fields are required to be filled!")
       return false;
     }
     return true;
@@ -36,6 +37,7 @@ const LoginPage = () => {
     try {
       await login(username, password); 
       navigate("/search"); 
+      
     } catch (err) {
       console.error("Login failed:", err);
     }
@@ -68,12 +70,7 @@ const LoginPage = () => {
             value={password}
             onChange={handleInputChange(setPassword)}
           />
-          {/* Display Errors */}
-          {(clientError || error) && (
-            <p className="text-red-500 font-semibold mt-2">
-              {clientError || error || "Login failed. Please try again."}
-            </p>
-          )}
+          
 
           <motion.button
             className="w-full bg-gradient-to-r from-orange-600 to-amber-500 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-orange-500 hover:to-amber-500 focus:outline-none focus:ring-2 focus:ring-orange-800 focus:ring-opacity-50 disabled:opacity-70 transition"

@@ -4,8 +4,9 @@ import toast from "react-hot-toast";
 import dotenv from 'dotenv'
 
 
-const API_URL = "https://cms-72aj.onrender.com/api/v1/data"; // Adjust this to your backend's base URL
 
+const mode = process.env.NODE_ENV
+const API_URL = mode === 'production' ? `${FRONT_END_API_URL}/api/v1/data` : 'http://localhost:3000/api/v1/data';
 
 export const useDataStore = create((set) => ({
   searchResults: [], // Data fetched from the backend
@@ -150,11 +151,13 @@ export const useDataStore = create((set) => ({
     set({ isLoading: true });
 
     try {
+      //console.log("jsonURL:",jsonUrl)
       const response = await axios.post(
         `${API_URL}/populate`,
         { jsonUrl },
         { headers: useDataStore.getState().getAuthHeaders() }
       );
+      //console.log("response:",response)
 
       if (response?.data?.success) {
         set({
