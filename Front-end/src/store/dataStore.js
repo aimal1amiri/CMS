@@ -3,14 +3,9 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import dotenv from 'dotenv'
 
-const mode=process.env.NODE_ENV
-let API_URL
 
-if(mode==='production'){
-  API_URL = process.env.API_URL_DATA
-}else{
-API_URL = "http://localhost:3000/api/v1/data"; // Adjust this to your backend's base URL
-}
+const API_URL = "http://localhost:3000/api/v1/data"; // Adjust this to your backend's base URL
+
 
 export const useDataStore = create((set) => ({
   searchResults: [], // Data fetched from the backend

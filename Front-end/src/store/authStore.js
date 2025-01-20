@@ -3,14 +3,9 @@ import axios from 'axios';
 import dotenv from 'dotenv'
 
 
-const mode=process.env.NODE_ENV
-let API_URL
 
-if(mode==='production'){
-  API_URL = process.env.API_URL_AUTH
-}else{
-API_URL = "http://localhost:3000/api/v1/auth"; // Adjust this to your backend's base URL
-}
+const API_URL = "http://localhost:3000/api/v1/auth"; // Adjust this to your backend's base URL
+
 
 
 export const useAuthenticationStore = create((set) => ({

@@ -23,6 +23,7 @@ const allowedOrigins = [
 
 CMS.use(cors({
     origin: allowedOrigins, 
+    credentials: true,
     
 }));
 
