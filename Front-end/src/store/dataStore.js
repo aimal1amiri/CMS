@@ -29,7 +29,7 @@ export const useDataStore = create((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await axios.get(`${API_URL}/search`, {
+      const response = await axios.get(`/search`, {
         params: {
           search: searchQuery,
           page,
@@ -74,7 +74,7 @@ export const useDataStore = create((set) => ({
 
     try {
       const response = await axios.put(
-        `${API_URL}/update/${id}`,
+        `/update/${id}`,
         updatedData,
         { headers: useDataStore.getState().getAuthHeaders() }
       );
@@ -109,7 +109,7 @@ export const useDataStore = create((set) => ({
 
     try {
       // Send filters and pagination parameters
-      const response = await axios.get(`${API_URL}/filter`, {
+      const response = await axios.get(`/filter`, {
         params: { ...filters, page, limit },
       });
 
@@ -153,7 +153,7 @@ export const useDataStore = create((set) => ({
     try {
       //console.log("jsonURL:",jsonUrl)
       const response = await axios.post(
-        `${API_URL}/populate`,
+        `/populate`,
         { jsonUrl },
         { headers: useDataStore.getState().getAuthHeaders() }
       );

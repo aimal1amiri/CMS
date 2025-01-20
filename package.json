@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "backend": "NODE_ENV=development nodemon Back-end/server.js",
-    "CMS": "NODE_ENV=production node Back-end/server.js",
-    "build": "npm install && npm install --prefix Front-end && npm run build --prefix Front-end"
+    "CMS": "node Back-end/server.js",
+    "build": "npm install --prefix Front-end --production=false && npm run build --prefix Front-end"
   },
   "keywords": [],
   "author": "",
