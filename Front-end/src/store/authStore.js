@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 
 
-const API_URL = "http://localhost:3000/api/v1/auth"; // Adjust this to your backend's base URL
+const API_URL = "https://cms-72aj.onrender.com/api/v1/auth"; // Adjust this to your backend's base URL
 
 
 
