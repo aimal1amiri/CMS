@@ -16,8 +16,9 @@ CMS.use(express.json());
 CMS.use(bodyParser.json());
 
 const allowedOrigins = [
-    'http://localhost:5173',  
-    process.env.FRONT_END_API_URL,  
+    'http://localhost:5173', 
+    "https://cms-72aj.onrender.com", 
+     
 ]
 
 CMS.use(cors({

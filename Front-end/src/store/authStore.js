@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 
 
-const API_URL = process.env.NODE_ENV === 'production' ? `${FRONT_END_API_URL}/api/v1/auth` : 'http://localhost:3000/api/v1/auth';
+const API_URL = process.env.NODE_ENV === 'production' ? `https://cms-72aj.onrender.com/api/v1/auth` : 'http://localhost:3000/api/v1/auth';
 //console.log(API_URL)
 
 
@@ -54,7 +54,7 @@ export const useAuthenticationStore = create((set) => ({
             });
         } catch (error) {
             set({ error: error.response?.data?.message || 'Error logging in', isLoading: false });
-            toast.error(error.response.data.message)
+            toast.error(error.response?.data?.message)
             throw error;
             
         }
