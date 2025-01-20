@@ -15,9 +15,14 @@ const __dirname = path.resolve();
 CMS.use(express.json());
 CMS.use(bodyParser.json());
 
+const allowedOrigins = [
+    'http://localhost:5173',  // Local frontend URL for development
+    process.env.FRONT_END_API_URL,  // Production frontend URL
+  ];
+
 
 CMS.use(cors({
-    origin: 'http://localhost:5173', // Replace with your frontend's URL
+    origin: allowedOrigins, 
     
 }));
 
