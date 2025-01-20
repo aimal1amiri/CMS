@@ -29,7 +29,7 @@ export const useDataStore = create((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await axios.get(`/search`, {
+      const response = await axios.get(`https://cms-72aj.onrender.com/api/v1/data/search`, {
         params: {
           search: searchQuery,
           page,
@@ -74,7 +74,7 @@ export const useDataStore = create((set) => ({
 
     try {
       const response = await axios.put(
-        `/update/${id}`,
+        `https://cms-72aj.onrender.com/api/v1/data/update/${id}`,
         updatedData,
         { headers: useDataStore.getState().getAuthHeaders() }
       );
@@ -109,7 +109,7 @@ export const useDataStore = create((set) => ({
 
     try {
       // Send filters and pagination parameters
-      const response = await axios.get(`/filter`, {
+      const response = await axios.get(`https://cms-72aj.onrender.com/api/v1/data/filter`, {
         params: { ...filters, page, limit },
       });
 
@@ -153,7 +153,7 @@ export const useDataStore = create((set) => ({
     try {
       //console.log("jsonURL:",jsonUrl)
       const response = await axios.post(
-        `/populate`,
+        `https://cms-72aj.onrender.com/api/v1/data/populate`,
         { jsonUrl },
         { headers: useDataStore.getState().getAuthHeaders() }
       );
