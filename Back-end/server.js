@@ -18,15 +18,23 @@ CMS.use(bodyParser.json());
 const allowedOrigins = [
     'http://localhost:5173', 
     "https://cms-72aj.onrender.com", 
-     
+ 
 ]
-
+/*
 CMS.use(cors({
     origin: allowedOrigins, 
-    
+        
     
 }));
+*/
 
+CMS.use(cors({
+    origin: allowedOrigins, // Allow the origins listed
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true, // Allow credentials (cookies, headers, etc.)
+  }));
+  
 
 CMS.use("/api/v1/data",databaseRoutes)
 CMS.use("/api/v1/auth",authenticaitonRoutes)
