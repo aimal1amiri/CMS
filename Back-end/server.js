@@ -32,7 +32,7 @@ CMS.use(cors({
 CMS.use(cors({
     origin: allowedOrigins, // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    allowedHeaders: ['content-Type', 'Authorization'], // Allowed headers
     credentials: true, // Allow credentials (cookies, etc.)
   }));
   
@@ -40,7 +40,7 @@ CMS.use(cors({
   CMS.options('*', cors({
     origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['content-Type', 'Authorization'],
     credentials: true,
   }));
   
