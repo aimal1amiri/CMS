@@ -36,6 +36,19 @@ CMS.use(cors({
     credentials: true, // Allow credentials (cookies, etc.)
   }));
   
+
+// Configure CSP with Helmet
+CMS.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"], // Only allow resources from the same origin
+            scriptSrc: ["'self'", "'unsafe-inline'"], // Allow inline scripts (if necessary)
+            imgSrc: ["'self'", "data:", "https://cms-72aj.onrender.com"], // Allow images from these sources
+            connectSrc: ["'self'", "https://cms-72aj.onrender.com"], // Allow API connections
+            styleSrc: ["'self'", "'unsafe-inline'"], // Allow inline styles (if necessary)
+        },
+    },
+}));
   
   
 
