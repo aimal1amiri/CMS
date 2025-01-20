@@ -36,13 +36,7 @@ CMS.use(cors({
     credentials: true, // Allow credentials (cookies, etc.)
   }));
   
-  // Handle preflight OPTIONS request
-  CMS.options('*', cors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['content-Type', 'Authorization'],
-    credentials: true,
-  }));
+  
   
 
 CMS.use("/api/v1/data",databaseRoutes)
