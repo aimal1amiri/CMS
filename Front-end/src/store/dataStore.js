@@ -1,12 +1,9 @@
 import { create } from "zustand";
 import axios from "axios";
 import toast from "react-hot-toast";
-import dotenv from 'dotenv'
 
 
-
-const mode = process.env.NODE_ENV
-const API_URL = mode === 'production' ? `https://cms-72aj.onrender.com/api/v1/data` : 'http://localhost:3000/api/v1/data';
+const API_URL =  'http://localhost:3000/api/v1/data';
 
 export const useDataStore = create((set) => ({
   searchResults: [], // Data fetched from the backend
@@ -29,7 +26,7 @@ export const useDataStore = create((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await axios.get(`https://cms-72aj.onrender.com/api/v1/data/search`, {
+      const response = await axios.get(`${API_URL}/search`, {
         params: {
           search: searchQuery,
           page,
@@ -74,7 +71,7 @@ export const useDataStore = create((set) => ({
 
     try {
       const response = await axios.put(
-        `https://cms-72aj.onrender.com/api/v1/data/update/${id}`,
+        `${API_URL}/update/${id}`,
         updatedData,
         { headers: useDataStore.getState().getAuthHeaders() }
       );
@@ -94,7 +91,7 @@ export const useDataStore = create((set) => ({
           ),
         }));
       }
-    } catch (error) {
+    } catch (error) {favicon.ico
       set({
         isLoading: false,
          
@@ -109,7 +106,7 @@ export const useDataStore = create((set) => ({
 
     try {
       // Send filters and pagination parameters
-      const response = await axios.get(`https://cms-72aj.onrender.com/api/v1/data/filter`, {
+      const response = await axios.get(`${API_URL}/filter`, {
         params: { ...filters, page, limit },
       });
 
@@ -153,7 +150,7 @@ export const useDataStore = create((set) => ({
     try {
       //console.log("jsonURL:",jsonUrl)
       const response = await axios.post(
-        `https://cms-72aj.onrender.com/api/v1/data/populate`,
+        `${API_URL}/populate`,
         { jsonUrl },
         { headers: useDataStore.getState().getAuthHeaders() }
       );

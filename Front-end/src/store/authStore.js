@@ -6,8 +6,8 @@ import toast from 'react-hot-toast';
 
 
 
-const API_URL = process.env.NODE_ENV === 'production' ? `https://cms-72aj.onrender.com/api/v1/auth` : 'http://localhost:3000/api/v1/auth';
-//console.log(API_URL)
+const API_URL = 'http://localhost:3000/api/v1/auth';
+
 
 
 
@@ -21,7 +21,7 @@ export const useAuthenticationStore = create((set) => ({
     signup: async (email, password, username) => { 
         set({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`https://cms-72aj.onrender.com/api/v1/auth/signup`, { email, password, username }); 
+            const response = await axios.post(`${API_URL}/signup`, { email, password, username }); 
             console.log("signin response:" ,response)
             const token = response.data.token;
             localStorage.setItem('authToken', token); // Store token in localStorage
@@ -37,7 +37,7 @@ export const useAuthenticationStore = create((set) => ({
         set({ isLoading: true, error: null });
         try {
             console.log(API_URL)
-            const response = await axios.post(`https://cms-72aj.onrender.com/api/v1/auth/signin`, { username, password },{ withCredentials: true });
+            const response = await axios.post(`${API_URL}/signin`, { username, password },{ withCredentials: true });
             
             const token = response.data.token;
     
@@ -74,7 +74,7 @@ export const useAuthenticationStore = create((set) => ({
         }
 
         try {
-            const response = await axios.get(`https://cms-72aj.onrender.com/api/v1/auth/user-check-auth`, {
+            const response = await axios.get(`${API_URL}/user-check-auth`, {
                 headers: { Authorization: token },
                 withCredentials: true, 
             });
