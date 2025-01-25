@@ -36,7 +36,7 @@
 
 ###
 
-<p align="left">"git clone https://github.com/aimal1amiri/CMS.git" <br>first create one folder, then right click , after that open the terminal or CMD (window) and run the above command.</p>
+<p align="left">"git clone https://github.com/aimal1amiri/CMS.git" <br>first create one folder, then right click , after that open the terminal or CMD (Command line interface of windows) and run the above command.</p>
 
 ###
 
@@ -46,7 +46,7 @@
 
 ###
 
-<p align="left">you will see a file is downloaded it into you folder. In terminal or CMD run the below two comands :<br>"cd CMS"<br>"npm run build"</p>
+<p align="left">you will see a file is downloaded it into you folder. Run the below two comands :<br>"cd CMS"<br>"npm install"</p>
 
 ###
 
@@ -54,7 +54,7 @@
 
 ###
 
-<p align="left">Make sure that you are in the main directory. Then run the following command: <br>"echo -e "NODE_ENV=development\nJWT_SECRET=yourkey" > .env"<br>( you can change the -JWT_SECRET- value if you want )</p>
+<p align="left">Make sure that you are in the CMS directory (ex: ...../CMS/> ). Then run the following command: <br>"npm run backend"<br>Your backend will start running.</p>
 
 ###
 
@@ -62,7 +62,7 @@
 
 ###
 
-<p align="left">So now it is the time to run the applicaiton : run the following command,<br>"npm run backend"</p>
+<p align="left">Open another terminal or CMD in the same directory ( ex: .../CMS > ) <br>then run these two commands:<br>first:  "cd Front-end"<br>second: "npm install"</p>
 
 ###
 
@@ -70,7 +70,7 @@
 
 ###
 
-<p align="left">Open another terminal or CMD in the same directory ( ex: ...>CMS ) <br>then run these Last two commands:<br>first:  "cd Front-end"<br>second: "npm run dev"</p>
+<p align="left">Then in the Front-end directory that you ran the previous command, run the following command:<br>"npm run dev"</p>
 
 ###
 
